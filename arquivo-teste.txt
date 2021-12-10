@@ -1,3 +1,0 @@
-Primeiro commit.
-Branch novabranch.
-Merge novabranch > main.
