@@ -1,0 +1,6 @@
+call api post "https://temflow-homol-creg455hia-uc.a.run.app/api/legacy/account/clear_sms_validation" with headers "Content-Type: application/json" and "Client-Id: 1ZLcRFk6AA4PI87xYO9O" and body from the string with parameters text starting from next line and ending with <END>
+{
+"email":"${userEmail}",
+"msisdn":"${1-phone}"
+}
+<END> and then check that http code is 200

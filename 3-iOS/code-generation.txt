@@ -1,0 +1,53 @@
+// --- SET GEOLOCATION
+// --- estação 1 Largo da Batata 
+Set geo location "-23.56682965509384, -46.69373814953165"
+
+start-validations-pt
+
+
+// --- LOGIN
+Tap "ic map menu"
+Tap "Login"
+login
+// Enter stored value "username" into "E-mail"
+// Enter stored value "password" into "Senha"
+// Tap "Continuar"
+Tap "NO THANKS" if exists
+
+// --- LOGIN VALIDATION
+Tap "ic map"
+Check that page contains "sair"
+// tap "Meus planos"
+
+// --- CLICK ON STATION
+click on the right edge of the screen
+click in the middle of the screen
+
+check that page contains "Não se esqueça!"
+check that page contains "Sua viagem pode ter custos adicionais"
+
+tap "Entendi" if exists
+
+tap "gerar código"
+
+wait 4 sec
+
+click in the middle of the screen
+
+tap "Entendi"
+
+tap "gerar código"
+grab value from "unlock_code" and save it as "code"
+check that page contains "Código de Desbloqueio"
+check that stored value "code" itself matches regex "[1-3]{5}"
+tap "ok"
+Tap "começar a pedalar"
+// --- TEST FOR RJ STATION
+// station 156 lat long - RJ
+// set geo location "-22.96027488068152, -43.208914628076805"
+// tap "ic focus"
+// tap "ic map menu"
+// tap in middle of the screen
+// tap "gerar código"
+// tap "ok"
+// tap "começar a pedalar"

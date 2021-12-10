@@ -1,0 +1,25 @@
+// --- CELL PHONE VALIDATION
+Tap "ok"
+Tap "validar agora"
+Enter "7867132642" into "201-555-0123"
+Tap "enviar"
+Check that sms from "+5532933007133" to "+17867132642" contains "verificação" and matches regex "O seu código de verificação para Tembici DEV por Tembici é [0-9]{6}" and save it as "sms"
+
+Extract value by regex "(?<=O seu código de verificação para Tembici DEV por Tembici é )[0-9]{6}" from "sms" and save it as "confirmationCode"
+
+Extract value by regex "(?<=^\d{0})\d" from "confirmationCode" and save it as "first"
+Enter stored value "first" into "firstEditText"
+Extract value by regex "(?<=^\d{1})\d" from "confirmationCode" and save it as "second"
+Enter stored value "second" into "secondEditText"
+Extract value by regex "(?<=^\d{2})\d" from "confirmationCode" and save it as "third"
+Enter stored value "third" into "thirdEditText"
+Extract value by regex "(?<=^\d{3})\d" from "confirmationCode" and save it as "fourth"
+Enter stored value "fourth" into "fourthEditText"
+Extract value by regex "(?<=^\d{4})\d" from "confirmationCode" and save it as "fifth"
+Enter stored value "fifth" into "fifthEditText"
+Extract value by regex "(?<=^\d{5})\d" from "confirmationCode" and save it as "sixth"
+Enter stored value "sixth" into "sixthEditText"
+
+Tap "validar"
+Check that page contains "celular foi validado com sucesso"
+Tap "ok"

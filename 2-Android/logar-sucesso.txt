@@ -1,0 +1,29 @@
+// --- Android - bi+tb - logar-sucesso --- //
+// doc 41080240870 OU 32666046877
+// tel 15203177581
+
+// --- ENTRADA COM BOTÃO NO RODAPÉ DO MAPA
+    tap "btn-login"
+
+    enter stored value "username" into "E-mail"
+    enter stored value "password" into "Senha"
+    tap "toggle password visibility"    // --- botão mostra senha --- //
+    tap "Continuar"
+
+        // --- SAIR DA CONTA
+            tap "btn-drawer-menu"      // --- Menu hamburguer/Lateral
+            tap "Sair"        
+
+ // --- ENTRADA PELO MENU HAMBURGUER/LATERAL   
+    tap "btn-drawer-menu"      // --- Menu hamburguer/Lateral --- //
+
+    tap "Faça seu login"
+
+    enter stored value "username" into "E-mail"
+    enter stored value "password" into "Senha"
+    tap "toggle password visibility"    // --- botão mostra senha --- //
+    tap "Continuar"
+
+    // --- CONFIRMAÇÃO DE LOGIN FEITO COM SUCESSO
+        tap "btn-drawer-menu"      // --- Menu hamburguer/Lateral --- //
+        check that page contains "Sair"

@@ -1,0 +1,52 @@
+// --- TB - NAVEGAR-LOGADO
+// doc 371838589
+
+//------------------------------------------------------------------------
+
+	// --- Variáveis que serão inseridas em Reusable Rules --- //
+	Generate by regex "android\.logado\.[0-9]{5}\@testrigor-mail\.com" then save as "email-usuario"
+	save value "371838589" as "doc"
+	// --------------------------------------------------------------------
+
+// --- Estação 18 -Parque da Cidade
+	set geo location "-15.794992417131011, -47.895028019409"
+
+	tap "btn-map-center"	// --- Botão re-centraliza geolocation
+
+	tap "btn-create-account"		// --- Botão "Crie sua conta"
+
+	rotina-criar-conta-rut
+
+	check that page contains "Conta criada!"
+	tap "Ir para mapa"
+
+	check that page contains "Tudo pronto para ganhar as ruas?"
+	check that page contains "Comprar plano"
+
+// --- LOGIN CHECK --- //
+	tap "btn-drawer-menu"	// --- MENU HAMBURGUER/LATERAL
+	check that page contains "android.logado"
+	check that page contains "sair"
+	click on the right edge of the screen // Sai do menu
+
+/// --- Estação 18 -Parque da Cidade
+	set geo location "-15.794992417131011, -47.895028019409"
+	wait 10 sec
+
+	click in the middle of the screen	//	clica na estação
+
+	tap "btn-generate-code" 	// Botão "Gerar código"
+
+	check that page contains "Selecione a cidade que você vai pedalar"
+	tap "Bike Sampa - Staging"
+	check that page contains "Planos para QA"
+	tap "btn-back-action"		// --- Botão voltar (<)
+
+// --- Histórico de viagens
+	tap "btn-drawer-menu"	// --- MENU HAMBURGUER/LATERAL
+	tap "Minhas viagens"
+	check that page contains "Parece que você ainda não fez nenhuma viagem"
+	tap "Começar a pedalar"		// vai para o mapa
+
+// --- 
+	rotina-anonymizer 	// Anonimiza usuário

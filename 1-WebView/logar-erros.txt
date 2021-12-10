@@ -1,0 +1,28 @@
+// --- Android - bi+tb - logar-erros --- //
+// doc 41080240870 OU 32666046877
+// tel 15203177581
+
+    rotina-configurar-webview
+
+// --- LOGIN COM BOTÃO NO RODAPÉ DO MAPA
+    tap "btn-login" if exists   // --- botão login --- //
+
+// --- senha errada
+    Enter stored value "username" into "E-mail" or "Email"
+    enter "password!error" into "Senha"
+    tap "toggle password visibility"    // --- botão mostra senha --- //
+    tap "Continuar" or "Continue"
+
+    // --- mensagem de erro
+        check that page contains "Login e/ou senha inválidos"
+        tap "Okay" if exists
+
+// --- usuário não cadastrado
+    Enter "email@email.org.br" into "E-mail" or "Email"
+    Enter stored value "password" into "Senha"
+    tap "toggle password visibility"    // --- botão mostra senha --- //
+    Tap "continuar" or "Continue"
+
+    // --- mensagem de erro
+        check that page contains "Seu email ou senha estão errados"
+        tap "Okay" if exists

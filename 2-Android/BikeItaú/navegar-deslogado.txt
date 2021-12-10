@@ -1,0 +1,57 @@
+// --- ANDROID - BI - NAVEGAR-DESLOGADO --- //
+
+// --- Estação 1 Largo da Batata
+	set geo location "-23.56682965509384, -46.69373814953165"
+
+	tap "btn-map-center"	// --- Centraliza o mapa a partir da geolocation
+
+// ---  CHECA OS BOTÕES LOGIN E CRIAR CONTA
+	tap "btn-login"
+
+	check that page contains "Login"
+	tap "btn-back-action"	// --- Botão voltar
+
+	tap "btn-create-account"	// --- Botão "Criar conta"
+
+	check that page contains "Cadastro"
+	tap "btn-back-action"	// --- Botão voltar
+
+// --- ESTAÇÃO 1
+	click in the middle of the screen	//	clica na estação
+	
+	tap "btn-generate-code"	// --- Botão Gerar código
+
+// --- verifica se aparece a tela de logar/cadastro
+ 	check that page contains "A escolha de ir e vir de um jeito mais inteligente"
+	check that page contains button "btn-navigate-to-signup"	// --- Botão "Crie sua conta"
+	check that page contains button "btn-navigate-to-login"	// --- Botão "Faça seu login"
+	click that button index is "1" // botão de fechar a tela "X"
+
+	tap "btn-read-qr-code"	// --- Botão "Ler QR code"
+
+// --- verifica se aparece a tela de logar/cadastro
+	check that page contains "A escolha de ir e vir de um jeito mais inteligente"
+	check that page contains button "btn-navigate-to-signup"	// --- Botão "Crie sua conta"
+	check that page contains button "btn-navigate-to-login"	// --- Botão "Faça seu login"
+	click that button index is "1" // botão de fechar a tela "X"
+
+tap "btn-show-more-station-info"
+
+// --- verifica tela de mais informações
+	check that page contains "Estação 1"
+	check that page contains "Largo da Batata"
+	check that page contains "Estações Próximas:"
+	check that page contains "btn-generate-code" // --- Botão "Gerar código"
+	check that page contains "btn-read-qr-code"	// --- Botão "Ler QR code"
+	tap on "Mapa do Google" with offset "720,100" // clica em um canto vazio da tela
+
+	tap "btn-drawer-menu"	// -- MENU HAMBURGUER
+
+
+// --- verifica se aparece a tela de logar/cadastro
+	check that page contains "A escolha de ir e vir de um jeito mais inteligente"
+	check that page contains button "btn-navigate-to-signup"	// --- Botão "Crie sua conta"
+	check that page contains button "btn-navigate-to-login"	// --- Botão "Faça seu login"
+	click that button index is "1" // botão de fechar a tela "X"
+	
+	tap "btn-map-refresh"	// --- Botão atualizar
