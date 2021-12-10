@@ -1,0 +1,100 @@
+// checar no django se o cpf usado aqui foi deletado para o teste rodar com sucesso.
+// 21003426
+
+// --- GEOLOCATION PERMISSIONS
+tap "OK"
+
+// --- CREATE NEW account
+press "profileImageView"
+click "Registrarme"
+
+press "Con tu tarjeta"
+
+Generate by regex "tremEcobici-android\.cpf[0-9]{7}\@testrigor-mail\.com" then enter into "Email" and save as "userEmail"
+enter stored value "userPassword" into "Contraseña"
+tap "Show password"
+click "SIGUIENTE"
+
+tap "Ingresar"
+
+check that page contains "Validar mis datos"
+enter stored value "DOCUMENT_DNI_1" into "DNI"
+enter stored value "TRAMITE_DNI_1" into "Número de Trámite"
+enter stored value "NAME_DNI_1" into "Mismo nombre"
+tap "Otros"
+tap "Masculino"
+tap "Ok"
+enter stored value "BIRTH_DNI_1" into "Fecha"
+tap checkbox
+click "SIGUIENTE"
+
+check that page contains "Dirección"
+enter "1234" into "Código"
+enter "Teste" into "Provincia"
+enter "Teste" into "Localidad"
+enter "Teste" into "Dirección"
+enter "123" into "Número"
+enter "3 33" into "Piso y"
+enter "Teste" into "Comuna"
+tap "Guardar"
+
+check that page contains "Validación"
+
+// --- CONFIRMATION OF SUCCESS
+
+// --- CELL PHONE VALIDATION
+
+enter "7174837927" into "201-555-0123"
+tap "Enviar"
+
+tap "Cambiar tu celular"
+
+enter "7867132642" into "201-555-0123"
+tap "Enviar"
+
+check that sms from "+5532933007133" to "+17867132642" contains "verificación" and matches regex "Su código de verificación para BA Ecobici DEV por Tembici es [0-9]{6}" and save it as "sms"
+extract value by regex "(?<=Su código de verificación para BA Ecobici DEV por Tembici es )[0-9]{6}" from "sms" and save it as "confirmationCode"
+
+extract value by regex "(?<=^\d{0})\d" from "confirmationCode" and save it as "first" 
+enter stored value "first" into "firstEditText"
+extract value by regex "(?<=^\d{1})\d" from "confirmationCode" and save it as "second"
+enter stored value "second" into "secondEditText"
+extract value by regex "(?<=^\d{2})\d" from "confirmationCode" and save it as "third"
+enter stored value "third" into "thirdEditText"
+extract value by regex "(?<=^\d{3})\d" from "confirmationCode" and save it as "fourth"
+enter stored value "fourth" into "fourthEditText"
+extract value by regex "(?<=^\d{4})\d" from "confirmationCode" and save it as "fifth"
+enter stored value "fifth" into "fifthEditText"
+extract value by regex "(?<=^\d{5})\d" from "confirmationCode" and save it as "sixth"
+enter stored value "sixth" into "sixthEditText"
+
+tap "validar"
+check that page contains "Listo!"
+tap "ok"
+check that page contains "Tu cuenta ha sido creada con éxito!"
+tap "Listo!"
+
+// --- LOGOUT
+
+click "profileImageView"
+click "Cerrar sesión"
+click "Sí"
+
+// --- LOGIN WITH THE NEW ACCOUNT
+click "profileImageView"
+click "Iniciar sesión"
+enter stored value "userEmail" into "Email"
+enter stored value "userPassword" into "Contraseña"
+click "Ingresar"
+
+// --- VALIDATES THAT LOGIN WORKED
+press "profileImageView"
+tap "NO THANKS" if exists
+check that screen contains  "Cerrar sesión"
+
+call api post "https://temflow-homol-creg455hia-uc.a.run.app/api/legacy/account/clear_sms_validation" with headers "Content-Type: application/json" and "Client-Id: 1ZLcRFk6AA4PI87xYO9O" and body from the string with parameters text starting from next line and ending with <END>
+{
+  "email":"${userEmail}",
+  "msisdn":"17867132642"
+}
+<END> and then check that http code is 200

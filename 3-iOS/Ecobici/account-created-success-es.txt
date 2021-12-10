@@ -1,0 +1,43 @@
+// checar no django se o DNI usado aqui foi deletado para o teste rodar com sucesso
+// 95716146
+// o telefone talvez precise ser deletado tbm, mas no firebase
+// 14153674887
+
+start-permissions-routine
+
+press "ic map menu"
+// --- CREATE ACCOUNT
+    tap "Registrarme ahora"
+
+    account-creation-routine
+// --- VALIDATE PHONE NUMBER
+    tap "+34"
+    enter "United States, +1" into "Spain, +34"
+    tap "done"
+    // --- phone number already registered
+        enter "7174837927" into "+1"
+        tap "Siguiente"
+        // --- pop up "number above correct"
+            tap "Sí"
+        check that page contains "Ups"
+        tap "Cambiar número"
+    phone-validation-routine
+  // --- successful creation
+    check that page contains "tu cuenta ha sido creada con éxito"
+    tap "ok"
+// --- LOGOUT
+    tap "ic map menu"
+    check that page contains "Cerrar sesión"
+    tap "Cerrar sesión"
+    tap "Sí"
+// --- LOGIN
+    press "ic map menu"
+    tap "Iniciar sesión"
+
+    enter stored value "userEmail" into "E-mail"   
+    enter stored value "userPassword" into "Contraseña"
+    tap "Ingresar"
+    tap "ic map menu"
+    check that page contains "Cerrar sesión"
+// --- ANONYMIZER
+    anonymizer-routine
