@@ -1,0 +1,25 @@
+//Notification permission
+tap "OK!" if exists
+
+//Releasing location
+tap "Ok" if exists
+
+press "profileImageView"
+
+tap "Iniciar sesión"
+
+//Check that page contains "Cómo te gustaria registrarte?"
+//tap "Con tu tarjeta"
+
+//Error invalid email
+enter "error@error.com" into "Email"
+enter "123$%Pswrd" into "Password"
+tap "Ingresar"
+
+check that page contains  "Usuario no encontrado"
+
+
+//Error invalid password
+enter stored value "username" into "Email"
+enter "123$Pswrd" into "Password"
+tap "Ingresar"

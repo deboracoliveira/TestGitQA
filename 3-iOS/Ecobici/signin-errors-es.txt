@@ -1,0 +1,22 @@
+start-permissions-routine
+
+Press "ic map menu"
+Tap "Iniciar sesión"
+
+// --- SIGNIN-ERROR-EMAIL
+    // --- error "Login e/ou senha inválidos"
+        check that button "Ingresar" is disabled
+        Enter stored value "username" into "E-mail"
+        check that button "Ingresar" is disabled
+        enter "password!error" into "Contraseña"
+        check that button "Ingresar" is enabled
+        tap "Ingresar"
+        check that page contains "Iniciar sesión"
+// --- SIGNIN-ERROR-PASSWORD
+    tap "arrowBack"
+    Tap "Iniciar sesión"
+    // --- error "Usuário não encontrado"
+        Enter "error@error.org.br" into "E-mail"
+        enter "password!error" into "Contraseña"
+        Tap "Ingresar"
+        check that page contains "Iniciar sesión"

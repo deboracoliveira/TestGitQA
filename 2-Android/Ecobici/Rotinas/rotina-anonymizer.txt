@@ -1,0 +1,15 @@
+// --- TOKEN DE LOGIN NA ANONYMIZER
+    call api post "https://us-central1-temanonymizerhomolog.cloudfunctions.net/login_firebase_gw" with headers "Content-Type: application/json" and "Api-Key: d7301adb4d83c438a935f9279d4ab65b629f2e66d26cb7e115e30a0b19393649" and body from the string with parameters text starting from next line and ending with <END>
+    {
+    "username": "testrigor_temanonymizer@tembici.com",
+    "password": "TesTriGorTemAnoNyMizer"
+    }
+    <END> and get "$.access_token" and save it as "bearerToken"  and then check that http code is 200 
+// --- ANONIMIZAÇÃO COM O TOKEN DE LOGIN
+    call api post "https://us-central1-temanonymizerhomolog.cloudfunctions.net/anonymizer_user_gw" with headers "API-Key: d7301adb4d83c438a935f9279d4ab65b629f2e66d26cb7e115e30a0b19393649" and from the string with parameters "Authorization: Bearer ${bearerToken}" and "Content-Type: application/json" and body from the string with parameters text starting from next line and ending with <END>
+    {
+    "user_reference": "${userEmail}",
+    "force": true,
+    "operator": "test-rigor"
+    }
+    <END> and then check that http code is 200
